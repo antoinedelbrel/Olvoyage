@@ -24,8 +24,6 @@ JOIN T_STATION s2
     ON s2.station_id = arrival_station_id
 ORDER BY t.train_id;
 
-/////////////////////////////////////////////////////////////////////////
-
 4
 SELECT c.last_name, c.first_name, p.pass_name, c.pass_date
     CASE c.pass_date
