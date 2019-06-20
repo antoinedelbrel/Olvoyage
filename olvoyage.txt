@@ -1,0 +1,52 @@
+1
+SELECT emp.last_name, emp.first_name, res.reservation_id
+FROM T_EMPLOYEE emp JOIN T_RESERVATION res
+ON emp.employee_id = res.employee_id;
+
+2
+SELECT cust.last_name, cust.first_name, p.pass_name
+FROM T_CUSTOMER cust JOIN T_PASS p
+ON cust.pass_id = p.pass_id
+AND  cust.last_name != p.pass_name;
+
+3
+SELECT emp.last_name, emp.first_name, res.buyer_id, res.reservation_id, res.creation_date
+FROM T_EMPLOYEE emp JOIN T_RESERVATION res
+ON emp.employee_id = res.employee_id
+WHERE res.reservation_id = 1;
+
+5
+SELECT t.train_id, s.city, s2.city, t.departure_time, t.arrival_time, t.distance, t.price
+FROM T_TRAIN t
+JOIN T_STATION s
+    ON s.station_id = departure_station_id
+JOIN T_STATION s2
+    ON s2.station_id = arrival_station_id
+ORDER BY t.train_id;
+
+/////////////////////////////////////////////////////////////////////////
+
+4
+SELECT c.last_name, c.first_name, p.pass_name, c.pass_date
+    CASE c.pass_date
+        WHEN c.pass
+FROM T_CUSTOMER c
+JOIN T_PASS p
+    ON c.pass_id = p.pass_id;
+
+6
+SELECT 'T_EMPLOYEE' AS "Total employées", COUNT(*) FROM T_EMPLOYEE
+UNION SELECT 'T_CUSTOMER' AS "Total clients", COUNT(*) FROM T_CUSTOMER;
+
+7
+SELECT s.city || ' ' || s.city "Départ - Arrivée"
+FROM T_STATION s
+JOIN T_TRAIN t
+    ON t.departure_station_id = s.city
+    OR t.arrival_station_id = s.city;
+
+8
+SELECT last_name, first_name, address
+FROM t_customer
+WHERE pass_id IS NULL AND pass_date IS NULL
+ORDER BY last_name, first_name;
